@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
     <title>The game 2001</title>
 </head>
 <body>
     <p class="text">Vitej ve hře 2001</p>
     <div class="container">
-        <form action="/start" method="post">
-            <button class="btn">
+        <form action="/start" method="get">
+            <button class="btn" type="submit">
                 <div class="in">Start</div>
             </button>
         </form>
-            <button class="btn">
+        <form action="/rules" method="post">
+            <button class="btn" type="submit">
                 <div class="in">Rules</div>
             </button>
+        </form>
+
 
 
 

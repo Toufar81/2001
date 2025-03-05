@@ -17,5 +17,12 @@ def index():
 def start():
 
     return "Tlacitko bylo stisknuto"
+
+@app.route('/rules',methods=['GET','POST'])
+def stop():
+    if request.method == 'POST':
+        return render_template("rules.html")
+    return render_template("welcom_start.html")
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+    <title>Rules of the game</title>
+
+</head>
+<body>
+    <div class="rules_container">
+        <h2>Game Rules</h2>
+        <ol>
+        <li>Each player starts with 0 points.</li>
+        <li>In their turn, a player rolls 2 dice (standard D6 dice).</li>
+        <li>The number of obtained pips is added to the total score.</li>
+        <li>Starting from the second turn:
+            <ul>
+                <li>if a player rolls a 7, they divide their number of points by 7, disregarding the fractional part</li>
+                <li>if the player rolls an 11, they multiply the current number of points by 11.</li>
+            </ul>
+        </li>
+        <li>The player who first reaches 2001 points wins.</li>
+    </ol>
+    </div>
+    <div class="container">
+
+        <form action="/rules" method="get">
+            <button class="btn">
+                <div class="in">back to the start</div>
+            </button>
+        </form>
+
+
+    </div>
+</body>
+</html>
