@@ -7,9 +7,20 @@
     <title>The game 2001</title>
 </head>
 <body>
-    <p class="text">Vitej ve hře 2001</p>
+    <div class="banner">
+        <div class="baner-text">
+            <h1>The game 2001</h1>
+        </div>
+        <div class="text-wrapper">
+            <div class="box b1">I welcome you..</div>
+            <div class="box b2">{{first_name}}</div>
+            <div class="box b3">Are you ready to play?</div>
+            <div class="box b4">Test4</div>
+            <div class="box b5">Hit the START button</div>
+        </div>
+    </div>
     <div class="container">
-        <form action="/start" method="get">
+        <form action="/game" method="get">
             <button class="btn" type="submit">
                 <div class="in">Start</div>
             </button>
@@ -19,12 +30,6 @@
                 <div class="in">Rules</div>
             </button>
         </form>
-
-
-
-
-
-
     </div>
 </body>
 </html>

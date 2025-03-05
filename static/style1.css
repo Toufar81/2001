@@ -9,6 +9,223 @@ html,body{
     background: black;
     font-family: 'Montserrat', sans-serif;
 }
+p{
+    text-align: center;
+}
+.game_container{
+    border: 3px solid blue;
+    color:#00eeff;
+    border-radius: 10px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 95%;
+    height: 95%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.score{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid green;
+    width: 90%;
+    height: 110px;
+}
+.roll_counter {
+    border: 3px palegreen ;
+    width: 150px;
+    height: 50%;
+}
+.score_computer {
+    border: 3px solid brown;
+    width: 60%;
+    height: 50%;
+}
+.score_you {
+    border: 3px solid slategray;
+    width: 60%;
+    height: 50%;
+}
+.roll_cubes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 3px solid red;
+    width: 90%;
+    height: 110px;
+}
+.you_cubes{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border: 3px solid deeppink;
+}
+
+.computer_cubes{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border: 3px solid orange;
+}
+.cubes{
+    border: 3px solid yellow;
+    width: 90%;
+    height: 110px;
+}
+.wrapper{
+    border: 3px solid blue;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    line-height: 1em;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 900;
+    margin: 0 10px;
+}
+.number_area{
+    display: inline-block;
+    overflow: hidden;
+    width: 0.8em;
+    height: 1.0em;
+    padding: 0.2em;
+    text-shadow: 0 4px 8px rgba(0,245,245,0.9);
+}
+.num{
+    font-family: inherit;
+    word-break: break-all;
+    display: block;
+    width: 0;
+    padding: 0 1.6em 0 0;
+    margin: 25px auto;
+    overflow: inherit;
+    animation: animate_counter 0.5s steps(10) forwards infinite;
+}
+.num:before {
+    content:attr(data-attr);
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+@keyframes animate_counter {
+    100%{
+        transform: translate3d(0,-10em,0);
+    }
+}
+.n1{
+    animation-iteration-count: 4;
+}
+.n2{
+    animation-iteration-count: 8;
+}
+.n3{
+    animation-iteration-count: 12;
+}
+.n4{
+    animation-iteration-count: 16;
+}
+
+.baner-text{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+}
+.baner-text h1{
+    text-align: center;
+    font-size: 70px;
+    margin: 0;
+    color: transparent;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px blue;
+
+}
+.box{
+    top: 40%;
+    font-size: 35px;
+    font-weight: bold;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    color: #00eeff;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.b1{
+    animation: ani1 15s infinite;
+}
+.b2{
+    animation: ani2 15s infinite;
+}
+.b3{
+    animation: ani3 15s infinite;
+}
+.b4{
+    animation: ani4 15s infinite;
+}
+.b5{
+    animation: ani5 15s infinite;
+}
+@keyframes ani1{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 0;
+    }
+}@keyframes ani2{
+    20%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+    }
+}
+ @keyframes ani3{
+    40%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    60%{
+        opacity: 0;
+    }
+}
+ @keyframes ani4{
+    60%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 0;
+    }
+}
+ @keyframes ani5{
+    80%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
 .rules_container{
     border: 3px solid blue;
     color:#00eeff;
@@ -23,7 +240,6 @@ html,body{
     height: 50%;
     top: 30%;
     left: 50%;
-    display: flex;
     transform: translate(-50%, -50%);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     animation: liftContainer 2s ease-out forwards;
