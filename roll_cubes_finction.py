@@ -1,20 +1,25 @@
 import random
 
-def roll_cubes(cube = 6,roll_count = 1):
+def roll_cubes(cube1_set,cube2_set,score):
+    print(f"Debug Roll cube c1-{cube1_set} c2-{cube2_set}")
     result_score =0
-    if roll_count == 1:
-        cube1 = random.randint(1,6)
-        cube2 = random.randint(1,6)
-        result_score = cube1 + cube2
-        return result_score,cube1,cube2
+
+    cube1_res = random.randint(1,cube1_set)
+    cube2_res = random.randint(1,cube2_set)
+    score_res = cube1_res + cube2_res + score
+    if cube1_res == 7 or cube2_res == 7:
+        score_result = int(round(score_res / 7, 0))
+        result_score = score_result
+    elif cube1_res == 11 or cube2_res == 11:
+        score_result = score_res * 11
+        result_score = score_result
     else:
-        cube1 = random.randint(1,cube)
-        cube2 = random.randint(1,cube)
-        roll_score = cube1 + cube2
-        if cube1 == 7 or cube2 == 7:
-            result_score = int(round(roll_score / 7, 0))
-        elif cube1 == 11 or cube2 == 11:
-            result_score = roll_score * 11
-        else:
-            result_score = roll_score
-        return result_score,cube1,cube2
+        result_score = score_res
+
+    return result_score,cube1_res,cube2_res
+
+def computer_rand_cube():
+    cubes_list = [3, 4, 6, 8, 10, 12, 20, 50]
+    rand_cube = random.choice(cubes_list)
+    print(f"Debug computer_rand_cube {rand_cube}")
+    return rand_cube

@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
     <link rel="icon" href="data:,">
     <title>Game</title>
+
+
 </head>
 <body>
     <div class="game_container">
@@ -37,6 +39,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="score_computer">
                 <p>Computer score</p>
                 <div class="wrapper">
@@ -58,35 +61,44 @@
         </div>
         <div class="roll_cubes">
             <div class="you_cubes">
+                <p>{{ first_name }} Roll</p>
+                <div class="you_roll">
+                     <div class="wrapper">
+                        <div class="number_area">
+                            <span class="num n1" data-attr="789456123">{{ formatted_you_cube1[0] }}</span>
+                        </div>
+                        <div class="number_area">
+                            <span class="num n2" data-attr="147852369">{{ formatted_you_cube1[1] }}</span>
+                        </div>
+                         <div class="number_area">
+                            <span class="num n3" data-attr="321654987">{{ formatted_you_cube1[2] }}</span>
+                        </div>
 
-                 <div class="wrapper">
+                    </div> <div class="wrapper">
 
-                    <div class="number_area">
-                        <span class="num n1" data-attr="789456123">{{ formatted_you_cube1[0] }}</span>
+                        <div class="number_area">
+                            <span class="num n1" data-attr="789456123">{{ formatted_you_cube2[0] }}</span>
+                        </div>
+                        <div class="number_area">
+                            <span class="num n2" data-attr="147852369">{{ formatted_you_cube2[1] }}</span>
+                        </div>
+                         <div class="number_area">
+                            <span class="num n3" data-attr="321654987">{{ formatted_you_cube2[2] }}</span>
+                        </div>
                     </div>
-                    <div class="number_area">
-                        <span class="num n2" data-attr="147852369">{{ formatted_you_cube1[1] }}</span>
-                    </div>
-                     <div class="number_area">
-                        <span class="num n3" data-attr="321654987">{{ formatted_you_cube1[2] }}</span>
-                    </div>
-
-                </div> <div class="wrapper">
-
-                    <div class="number_area">
-                        <span class="num n1" data-attr="789456123">{{ formatted_you_cube2[0] }}</span>
-                    </div>
-                    <div class="number_area">
-                        <span class="num n2" data-attr="147852369">{{ formatted_you_cube2[1] }}</span>
-                    </div>
-                     <div class="number_area">
-                        <span class="num n3" data-attr="321654987">{{ formatted_you_cube2[2] }}</span>
-                    </div>
-
                 </div>
             </div>
+            <div class="screen_tex">
+
+                    {% for message in messages_list %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+
+            </div>
             <div class="computer_cubes">
-                <div class="wrapper">
+                <p>Computer Roll</p>
+                <div class="conputer_roll">
+                    <div class="wrapper">
                     <div class="number_area">
                         <span class="num n1" data-attr="789456123">{{ formatted_computer_cube1[0] }}</span>
                     </div>
@@ -107,69 +119,98 @@
                      <div class="number_area">
                         <span class="num n3" data-attr="321654987">{{ formatted_computer_cube2[2] }}</span>
                     </div>
-
+                </div>
                 </div>
 
             </div>
         </div>
-        <div class="cubes">
-                <div class="cube_button c3">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 3</div>
-                        </button>
-                    </form>
+        {% if roll_count >= 1%}
+            <div class="cubes">
+            <form action="/get_tube_n1" method="post" class="form-container">
+                <p>CUBE 1</p>
+                <div class="form_container_cube d1">
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="3" id="option1">
+                        <label for="option1">D 3</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" name="get_tube_n1" value="4" id="option2">
+                        <label for="option2">D 4</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" name="get_tube_n1" value="6" id="option3">
+                        <label for="option3">D 6</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="8" id="option4">
+                        <label for="option4">D 8</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="10" id="option5">
+                        <label for="option5">D 10</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="12" id="option6">
+                        <label for="option6">D 12</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="20" id="option7">
+                        <label for="option7">D 20</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n1" value="50" id="option8">
+                        <label for="option8">D 50</label><br>
+                    </div>
                 </div>
-                <div class="cube_button c4">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 4</div>
-                        </button>
-                    </form>
+
+                <button class="btn" type="submit">
+                    <div class="in">Zadat</div>
+                </button>
+            </form>
+            <form action="/get_tube_n2" method="post" class="form-container">
+                <p>CUBE 2</p>
+                <div class="form_container_cube d2">
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="3">
+                        <label for="option1">D 3</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" name="get_tube_n2" value="4">
+                        <label for="option2">D 4</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" name="get_tube_n2" value='6'>
+                        <label for="option3">D 6</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="8">
+                        <label for="option4">D 8</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="10">
+                        <label for="option5">D 10</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="12">
+                        <label for="option6">D 12</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="20">
+                        <label for="option7">D 20</label><br>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio"  name="get_tube_n2" value="50">
+                        <label for="option8">D 50</label><br>
+                    </div>
                 </div>
-                <div class="cube_button c6">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 6</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="cube_button c8">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 8</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="cube_button c10">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 10</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="cube_button c12">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 12</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="cube_button c20">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 20</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="cube_button c100">
-                    <form action="/game" method="POST">
-                        <button class="btn" type="submit">
-                            <div class="in">D 100</div>
-                        </button>
-                    </form>
-                </div>
+
+                <button class="btn" type="submit">
+                    <div class="in">Zadat</div>
+                </button>
+            </form>
+
         </div>
+        {% endif %}
     </div>
     <div class="container">
         <form action="/game" method="POST">
@@ -177,26 +218,26 @@
                 <div class="in">Roll!</div>
             </button>
         </form>
-        <form action="">
+        <form action="/rules" method="GET">
             <div class="cube c3">
-                <div class="face front">
-                <p class="numer">1</p>
-                </div>
-                <div class="face back">
-                    <p class="numer">2</p>
-                </div>
-                <div class="face right">
-                    <p class="numer">3</p>
-                </div>
-                <div class="face left">
-                    <p class="numer">4</p>
-                </div>
-                <div class="face top">
-                    <p class="numer">5</p>
-                </div>
-                <div class="face bottom">
-                    <p class="numer">6</p>
-                </div>
+                    <div class="face front">
+                    <p class="numer">1</p>
+                    </div>
+                    <div class="face back">
+                        <p class="numer">2</p>
+                    </div>
+                    <div class="face right">
+                        <p class="numer">3</p>
+                    </div>
+                    <div class="face left">
+                        <p class="numer">4</p>
+                    </div>
+                    <div class="face top">
+                        <p class="numer">5</p>
+                    </div>
+                    <div class="face bottom">
+                        <p class="numer">6</p>
+                    </div>
             </div>
         </form>
         <form action="/game" method="get">
