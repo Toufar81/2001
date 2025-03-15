@@ -19,7 +19,9 @@ formatted_you_score  = list(str(you_score).zfill(4))
 
 @app.route('/',methods=['GET','POST'])
 def index():
+    global win_score
     if request.method == 'POST':
+        win_score = None
         first_name = request.form.get("first_name")
         secund_name = request.form.get("second_name")
         name.append(first_name)
@@ -73,11 +75,11 @@ def start():
                     messages_list.append(f" For now, {name} is winning")
         else:
             if get_tube_n1_int == None and get_tube_n2_int == None:
-                messages_list.append(f" Nazadali jste obě kostky")
+                messages_list.append(f" You did not enter both dice")
             elif get_tube_n1_int == None:
-                messages_list.append(f" Nazadali jste kostku 1")
+                messages_list.append(f" You did not enter the cube 1")
             elif get_tube_n2_int == None :
-                messages_list.append(f" Nazadali jste kostku 2")
+                messages_list.append(f" You did not enter the cube 2")
             you_cube1 =0
             you_cube2 = 0
             computer_cube1 = 0
@@ -96,7 +98,14 @@ def start():
         formatted_computer_score = list(str(computer_score).zfill(4))
         get_tube_n1_int = None
         get_tube_n2_int = None
-        return render_template("game.html", first_name=name[0],formatted_computer_score=formatted_computer_score,formatted_you_score=formatted_you_score,formatted_you_cube1=formatted_you_cube1,formatted_you_cube2=formatted_you_cube2,formatted_roll_count=formatted_roll_count,formatted_computer_cube1=formatted_computer_cube1,formatted_computer_cube2=formatted_computer_cube2,messages_list=messages_list,roll_count=roll_count)
+        if you_score >= win_score:
+            winer = name[0]
+            return render_template("win.html", winer=winer, you_score=you_score, computer_score=computer_score)
+        elif computer_score >= win_score:
+            winer =  "Computer"
+            return render_template("win.html",winer=winer, you_score=you_score, computer_score=computer_score)
+        else:
+            return render_template("game.html", first_name=name[0],formatted_computer_score=formatted_computer_score,formatted_you_score=formatted_you_score,formatted_you_cube1=formatted_you_cube1,formatted_you_cube2=formatted_you_cube2,formatted_roll_count=formatted_roll_count,formatted_computer_cube1=formatted_computer_cube1,formatted_computer_cube2=formatted_computer_cube2,messages_list=messages_list,roll_count=roll_count)
     else:
         # count
         formatted_roll_count = (0,0)
@@ -120,7 +129,11 @@ def stop():
 @app.route('/get_tube_n1',methods=['POST'])
 def get_tube_n1():
     global get_tube_n1_int
-    get_tube_n1_int = int(request.form.get("get_tube_n1"))
+    get_tube_n1_int = (request.form.get("get_tube_n1"))
+    if get_tube_n1_int != None:
+        get_tube_n1_int = int(get_tube_n1_int)
+    else:
+        get_tube_n1_int = None
     print(f"Debug getcube {get_tube_n1_int} {type(get_tube_n1_int)}")
 
     return '', 204
@@ -129,19 +142,31 @@ def get_tube_n1():
 def get_tube_n2():
 
     global get_tube_n2_int
-    get_tube_n2_int = int(request.form.get("get_tube_n2"))
-
+    get_tube_n2_int = (request.form.get("get_tube_n2"))
+    if get_tube_n2_int != None:
+        get_tube_n2_int = int(get_tube_n2_int)
+    else:
+        get_tube_n2_int = None
 
     print(f"Debug getcube {get_tube_n2_int} {type(get_tube_n2_int)}")
     return '', 204
-@app.route('/get_win_score',methods=['POST'])
+@app.route('/get_win_score',methods=["GET",'POST'])
 def get_win_score():
+    global you_score
+    global computer_score
+    global roll_count
+    global messages_list
     if request.method == 'POST':
         global win_score
         win_score = int(request.form.get("win_score"))
         print(f"Debug c: {win_score}")
         return render_template("welcom_start.html",first_name=name[0],win_score=win_score)
     else:
+        win_score = None
+        you_score = 0
+        computer_score = 0
+        roll_count = 0
+        messages_list = list()
         print(f"Debug get_win_score: {win_score}")
         return render_template("welcom_start.html", first_name=name[0], win_score=win_score)
 

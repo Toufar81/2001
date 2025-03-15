@@ -41,22 +41,18 @@ p{
 .score{
     display: flex;
     flex-direction: row;
-    border: 3px solid green;
     width: 97%;
     height: 110px;
 }
 .roll_counter {
-    border: 3px palegreen ;
     width: 150px;
     height: 50%;
 }
 .score_computer {
-    border: 3px solid brown;
     width: 60%;
     height: 50%;
 }
 .score_you {
-    border: 3px solid slategray;
     width: 60%;
     height: 50%;
 }
@@ -64,14 +60,12 @@ p{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 3px solid red;
     width: 97%;
     height: 110px;
 }
 .you_cubes{
     display: flex;
     flex-direction: column;
-    border: 3px solid deeppink;
 }
 .you_roll, .conputer_roll{
     display: flex;
@@ -88,7 +82,6 @@ p{
 .computer_cubes{
     display: flex;
     flex-direction: column;
-    border: 3px solid orange;
 
 }
 .cubes{
@@ -96,7 +89,6 @@ p{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border: 3px solid yellow;
     width: 97%;
     height: 190px;
 
@@ -165,6 +157,7 @@ p{
     }
 }
 .wrapper{
+    padding: 1px 4px;
     border: 3px solid blue;
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;

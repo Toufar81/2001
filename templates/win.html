@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+    <title>Winner</title>
+
+</head>
+<body>
+    <div class="rules_container">
+        <h2>Winner is {{ winer }}</h2>
+        <ul>
+        <li>Your score: {{ you_score }}</li>
+        <li>Computer score: {{ computer_score }}</li>
+        <li>Congratulations to the winner</li>
+
+    </ul>
+
+    </div>
+    <div class="container">
+        <form action="/" method="get">
+            <button class="btn" type="submit">
+                <div class="in">Game over!</div>
+            </button>
+        </form>
+        <form action="/rules" method="GET">
+            <div class="cube c3">
+                    <div class="face front">
+                    <p class="numer">1</p>
+                    </div>
+                    <div class="face back">
+                        <p class="numer">2</p>
+                    </div>
+                    <div class="face right">
+                        <p class="numer">3</p>
+                    </div>
+                    <div class="face left">
+                        <p class="numer">4</p>
+                    </div>
+                    <div class="face top">
+                        <p class="numer">5</p>
+                    </div>
+                    <div class="face bottom">
+                        <p class="numer">6</p>
+                    </div>
+            </div>
+        </form>
+        <form action="/get_win_score" method="get">
+            <button class="btn" type="submit">
+                <div class="in">New game</div>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

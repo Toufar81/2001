@@ -15,7 +15,7 @@
         {% if win_score == None %}
             <div class="box b1">I welcome you..</div>
             <div class="box b2">{{first_name}}</div>
-            <div class="box b3">Choose a winning</div>
+            <div class="box b3">Choose a winning score</div>
         {% else %}
             <div class="box b3">Are you ready to play?</div>
             <div class="box b4">{{first_name}}</div>
@@ -24,11 +24,13 @@
         </div>
     </div>
     <div class="container">
-        <form action="/game" method="get">
-            <button class="btn" type="submit">
-                <div class="in">Start</div>
-            </button>
-        </form>
+        {% if win_score != None %}
+            <form action="/game" method="get">
+                <button class="btn" type="submit">
+                    <div class="in">Start</div>
+                </button>
+            </form>
+        {% endif %}
         {% if win_score == None %}
             <div class="select_win_number">
              <form action="/get_win_score" method="POST">
